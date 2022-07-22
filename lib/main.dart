@@ -4,13 +4,12 @@ import 'package:hogwarts_clock/ui/pages/clocks/clocks.dart';
 import 'package:hogwarts_clock/utils/constants/text.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart' show Firebase;
-import 'package:hogwarts_clock/utils/generate/guid_gen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  ClocksRepositories.guid = GUIDGen.generate();
+  await ClocksRepositories.loadGUID();
 
   runApp(
     const App(),

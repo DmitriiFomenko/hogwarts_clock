@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hogwarts_clock/repositories/clocks_repositories.dart';
 import 'package:hogwarts_clock/ui/pages/clocks/cubit/clocks_cubit.dart';
 import 'package:hogwarts_clock/ui/widgets/clocks/listview_clocks.dart';
-import 'package:hogwarts_clock/utils/generate/guid_gen.dart';
 
 // ignore: must_be_immutable
 class ClocksPage extends StatelessWidget {
@@ -63,10 +62,15 @@ class ClocksPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      ClocksRepositories.guid = GUIDGen.generate();
-                      controller.text = ClocksRepositories.guid;
+                      controller.text = ClocksRepositories.newGUID();
                     },
                     child: const Text('Generate'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      ClocksRepositories.saveGUID(guid: controller.text);
+                    },
+                    child: const Text('Save guid'),
                   ),
                 ],
               ),

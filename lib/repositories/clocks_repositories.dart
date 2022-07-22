@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hogwarts_clock/models/clock.dart';
 import 'package:hogwarts_clock/utils/constants/clock_colors.dart';
+import 'package:hogwarts_clock/utils/generate/guid_gen.dart';
+import 'package:path_provider/path_provider.dart';
 
 abstract class ClocksRepositories {
   static List<Clock> clocks = [
@@ -24,6 +26,31 @@ abstract class ClocksRepositories {
     ),
   ];
   static String guid = 'null';
+
+  static String newGUID() {
+    ClocksRepositories.guid = GUIDGen.generate();
+    return ClocksRepositories.guid;
+  }
+
+  static saveGUID({required String guid}) async {
+    Directory tempDir = await getTemporaryDirectory();
+    String tempPath = tempDir.path;
+
+    await File('$tempPath/guid.txt').writeAsString(guid);
+  }
+
+  static loadGUID() async {
+    Directory tempDir = await getTemporaryDirectory();
+    String tempPath = tempDir.path;
+
+    try {
+      await File('$tempPath/guid.txt').readAsString().then((String contents) {
+        guid = contents;
+      });
+    } catch (e) {
+      newGUID();
+    }
+  }
 
   static Future saveClocks({required String guid}) async {
     final docClock = FirebaseFirestore.instance.collection('clocks').doc(guid);
