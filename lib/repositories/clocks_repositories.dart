@@ -32,14 +32,14 @@ abstract class ClocksRepositories {
     return ClocksRepositories.guid;
   }
 
-  static saveGUID({required String guid}) async {
+  static Future saveGUID({required String guid}) async {
     Directory tempDir = await getTemporaryDirectory();
     String tempPath = tempDir.path;
 
     await File('$tempPath/guid.txt').writeAsString(guid);
   }
 
-  static loadGUID() async {
+  static Future loadGUID() async {
     Directory tempDir = await getTemporaryDirectory();
     String tempPath = tempDir.path;
 
