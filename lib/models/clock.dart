@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Clock {
-  final Color colorSubstance;
-  final double value;
+  Color colorSubstance;
+  double value;
 
   Clock({
     required this.colorSubstance,

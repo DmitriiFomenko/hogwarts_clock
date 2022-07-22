@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hogwarts_clock/ui/pages/clocks.dart';
+import 'package:hogwarts_clock/ui/pages/clocks/clocks.dart';
 import 'package:hogwarts_clock/utils/constants/text.dart';
 
 void main() => runApp(
