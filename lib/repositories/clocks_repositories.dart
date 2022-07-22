@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hogwarts_clock/models/clock.dart';
 import 'package:hogwarts_clock/utils/constants/clock_colors.dart';
 
@@ -23,6 +24,25 @@ abstract class ClocksRepositories {
     ),
   ];
 
+  static String lastSaveGUID = 'null';
+
+  static Future saveClocks() async {
+    final docClock =
+        FirebaseFirestore.instance.collection('clocks').doc('test');
+
+    await docClock.set(ClocksRepositories.toJson());
+  }
+
+  static Future loadClocks() async {
+    final docClock =
+        FirebaseFirestore.instance.collection('clocks').doc('test');
+    final snapshot = await docClock.get();
+
+    if (snapshot.exists) {
+      ClocksRepositories.fromJson(snapshot.data()!);
+    }
+  }
+
   static Map<String, dynamic> toJson() => {
         '0 clock': clocks[0].toJson(),
         '1 clock': clocks[1].toJson(),
@@ -38,5 +58,7 @@ abstract class ClocksRepositories {
       clocks[2] = Clock.fromJson(json['2 clock']),
       clocks[3] = Clock.fromJson(json['3 clock']),
     ];
+
+    lastSaveGUID = json['OS'] ?? 'null';
   }
 }

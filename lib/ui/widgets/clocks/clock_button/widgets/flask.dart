@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hogwarts_clock/ui/widgets/clock_button/widgets/substance.dart';
+import 'package:hogwarts_clock/ui/widgets/clocks/clock_button/widgets/substance.dart';
 import 'package:hogwarts_clock/utils/constants/clock_colors.dart';
 
 class Flask extends StatelessWidget {

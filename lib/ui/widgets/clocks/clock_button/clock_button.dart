@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hogwarts_clock/ui/widgets/clock_button/widgets/flask.dart';
-import 'package:hogwarts_clock/ui/widgets/clock_button/widgets/substance.dart';
+import 'package:hogwarts_clock/ui/widgets/clocks/clock_button/widgets/flask.dart';
+import 'package:hogwarts_clock/ui/widgets/clocks/clock_button/widgets/substance.dart';
 
 class ClockButton extends StatelessWidget {
   const ClockButton({
