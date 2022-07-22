@@ -23,19 +23,16 @@ abstract class ClocksRepositories {
       value: 0.3,
     ),
   ];
+  static String guid = 'null';
 
-  static String lastSaveGUID = 'null';
-
-  static Future saveClocks() async {
-    final docClock =
-        FirebaseFirestore.instance.collection('clocks').doc('test');
+  static Future saveClocks({required String guid}) async {
+    final docClock = FirebaseFirestore.instance.collection('clocks').doc(guid);
 
     await docClock.set(ClocksRepositories.toJson());
   }
 
-  static Future loadClocks() async {
-    final docClock =
-        FirebaseFirestore.instance.collection('clocks').doc('test');
+  static Future loadClocks({required String guid}) async {
+    final docClock = FirebaseFirestore.instance.collection('clocks').doc(guid);
     final snapshot = await docClock.get();
 
     if (snapshot.exists) {
@@ -49,6 +46,7 @@ abstract class ClocksRepositories {
         '2 clock': clocks[2].toJson(),
         '3 clock': clocks[3].toJson(),
         'OS': Platform.operatingSystem,
+        'GUID': guid,
       };
 
   static void fromJson(Map<String, dynamic> json) {
@@ -58,7 +56,5 @@ abstract class ClocksRepositories {
       clocks[2] = Clock.fromJson(json['2 clock']),
       clocks[3] = Clock.fromJson(json['3 clock']),
     ];
-
-    lastSaveGUID = json['OS'] ?? 'null';
   }
 }

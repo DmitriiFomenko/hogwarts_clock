@@ -71,13 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
-  crypto:
-    dependency: transitive
-    description:
-      name: crypto
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.2"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -125,13 +118,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "8.0.1"
-  flutter_guid:
-    dependency: "direct main"
-    description:
-      name: flutter_guid
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -259,27 +245,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.9"
-  typed_data:
-    dependency: transitive
-    description:
-      name: typed_data
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.3.1"
-  uuid:
-    dependency: transitive
-    description:
-      name: uuid
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.6"
-  validators:
-    dependency: transitive
-    description:
-      name: validators
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
   vector_math:
     dependency: transitive
     description:
