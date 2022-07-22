@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hogwarts_clock/ui/pages/clocks/clocks.dart';
 import 'package:hogwarts_clock/utils/constants/text.dart';
-import 'package:cloud_functions/cloud_functions.dart';
-import 'package:firebase_core/firebase_core.dart';
+// ignore: depend_on_referenced_packages
+import 'package:firebase_core/firebase_core.dart' show Firebase;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

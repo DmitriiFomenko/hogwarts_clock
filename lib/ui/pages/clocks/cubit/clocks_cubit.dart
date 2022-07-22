@@ -24,4 +24,8 @@ class ClocksCubit extends Cubit<bool> {
 
     emit(!state);
   }
+
+  void updateState() {
+    emit(!state);
+  }
 }
