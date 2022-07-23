@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 abstract class ClockColors {
-  static Color grey = Colors.grey;
+  static const Color grey = Colors.grey;
 
-  static Color red = Colors.redAccent;
-  static Color green = Colors.greenAccent;
-  static Color blue = Colors.blueAccent;
-  static Color yellow = Colors.yellowAccent;
+  static const Color red = Colors.redAccent;
+  static const Color green = Colors.greenAccent;
+  static const Color blue = Colors.blueAccent;
+  static const Color yellow = Colors.yellowAccent;
 }

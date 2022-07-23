@@ -19,8 +19,8 @@ class Flask extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(135.0),
           bottomRight: Radius.circular(135.0),
         ),

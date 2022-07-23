@@ -1,3 +1,3 @@
 abstract class StringsText {
-  static String titleApp = 'Hogwarts clock';
+  static const String titleApp = 'Hogwarts clock';
 }
