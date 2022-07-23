@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hogwarts_clock/repositories/clocks_repositories.dart';
 import 'package:hogwarts_clock/ui/pages/clocks/cubit/clocks_cubit.dart';
 import 'package:hogwarts_clock/ui/widgets/clocks/listview_clocks.dart';
+import 'package:hogwarts_clock/utils/constants/string_text.dart';
 
 // ignore: must_be_immutable
 class ClocksPage extends StatelessWidget {
@@ -33,7 +34,7 @@ class ClocksPage extends StatelessWidget {
                           );
                           context.read<ClocksCubit>().updateState();
                         },
-                        child: const Text('Load'),
+                        child: const Text(StringsText.load),
                       ),
                     ],
                   );
@@ -47,14 +48,14 @@ class ClocksPage extends StatelessWidget {
                         guid: controller.text,
                       );
                     },
-                    child: const Text('Save'),
+                    child: const Text(StringsText.save),
                   ),
-                  Text('OS: ${Platform.operatingSystem}'),
+                  Text('${StringsText.os}: ${Platform.operatingSystem}'),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       decoration: const InputDecoration(
-                        labelText: 'GUID',
+                        labelText: StringsText.guid,
                         border: OutlineInputBorder(),
                       ),
                       controller: controller,
@@ -64,13 +65,13 @@ class ClocksPage extends StatelessWidget {
                     onPressed: () {
                       controller.text = ClocksRepositories.newGUID();
                     },
-                    child: const Text('Generate'),
+                    child: const Text(StringsText.generate),
                   ),
                   TextButton(
                     onPressed: () {
                       ClocksRepositories.saveGUID(guid: controller.text);
                     },
-                    child: const Text('Save guid'),
+                    child: const Text(StringsText.saveGUID),
                   ),
                 ],
               ),

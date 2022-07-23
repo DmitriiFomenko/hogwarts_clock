@@ -4,6 +4,7 @@ import 'package:hogwarts_clock/repositories/clocks_repositories.dart';
 import 'package:hogwarts_clock/ui/pages/clocks/cubit/clocks_cubit.dart';
 import 'package:hogwarts_clock/ui/widgets/clocks/clock_button/widgets/flask.dart';
 import 'package:hogwarts_clock/ui/widgets/clocks/clock_button/widgets/substance.dart';
+import 'package:hogwarts_clock/utils/constants/string_text.dart';
 
 abstract class DialogClock {
   static void showSettingValue({
@@ -18,7 +19,7 @@ abstract class DialogClock {
       builder: (context) {
         return AlertDialog(
           title: Text(
-            'Change value clock #$index',
+            '${StringsText.changeValueClock} #$index',
             textAlign: TextAlign.center,
             style: const TextStyle(
               color: Colors.red,
@@ -47,7 +48,7 @@ abstract class DialogClock {
                   TextButton(
                     onPressed: onPressedDec,
                     child: const Text(
-                      'Dec',
+                      StringsText.dec,
                       style: TextStyle(
                         fontSize: 18,
                       ),
@@ -56,7 +57,7 @@ abstract class DialogClock {
                   TextButton(
                     onPressed: onPressedInc,
                     child: const Text(
-                      'Inc',
+                      StringsText.inc,
                       style: TextStyle(
                         fontSize: 18,
                       ),

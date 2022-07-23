@@ -35,7 +35,7 @@ class ListViewClocks extends StatelessWidget {
                     onPressedDec: () {
                       context.read<ClocksCubit>().decValue(index: index);
                     },
-                    cubit: context.read<ClocksCubit>(),
+                    clocksCubit: context.read<ClocksCubit>(),
                   );
                 },
               ),

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hogwarts_clock/models/clock.dart';
 import 'package:hogwarts_clock/utils/constants/clock_colors.dart';
-import 'package:hogwarts_clock/utils/generate/guid_gen.dart';
+import 'package:hogwarts_clock/utils/generate/guid.dart';
 import 'package:path_provider/path_provider.dart';
 
 abstract class ClocksRepositories {
@@ -28,7 +28,7 @@ abstract class ClocksRepositories {
   static String guid = 'null';
 
   static String newGUID() {
-    ClocksRepositories.guid = GUIDGen.generate();
+    ClocksRepositories.guid = GUID.generate();
     return ClocksRepositories.guid;
   }
 

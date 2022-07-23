@@ -1,6 +1,6 @@
 import 'dart:math';
 
-class GUIDGen {
+class GUID {
   static String generate() {
     Random random = Random(DateTime.now().millisecond);
 
