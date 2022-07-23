@@ -32,14 +32,14 @@ abstract class ClocksRepositories {
     return ClocksRepositories.guid;
   }
 
-  static Future saveGUID({required String guid}) async {
+  static Future<void> saveGUID({required String guid}) async {
     Directory tempDir = await getTemporaryDirectory();
     String tempPath = tempDir.path;
 
     await File('$tempPath/guid.txt').writeAsString(guid);
   }
 
-  static Future loadGUID() async {
+  static Future<void> loadGUID() async {
     Directory tempDir = await getTemporaryDirectory();
     String tempPath = tempDir.path;
 
@@ -52,13 +52,13 @@ abstract class ClocksRepositories {
     }
   }
 
-  static Future saveClocks({required String guid}) async {
+  static Future<void> saveClocks({required String guid}) async {
     final docClock = FirebaseFirestore.instance.collection('clocks').doc(guid);
 
     await docClock.set(ClocksRepositories.toJson());
   }
 
-  static Future loadClocks({required String guid}) async {
+  static Future<void> loadClocks({required String guid}) async {
     final docClock = FirebaseFirestore.instance.collection('clocks').doc(guid);
     final snapshot = await docClock.get();
 
