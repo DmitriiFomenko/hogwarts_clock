@@ -12,7 +12,7 @@ abstract class DialogClock {
     required int index,
     required VoidCallback onPressedInc,
     required VoidCallback onPressedDec,
-    required ClocksCubit cubit,
+    required ClocksCubit clocksCubit,
   }) {
     showDialog(
       context: context,
@@ -29,7 +29,7 @@ abstract class DialogClock {
             mainAxisSize: MainAxisSize.min,
             children: [
               BlocBuilder<ClocksCubit, bool>(
-                bloc: cubit,
+                bloc: clocksCubit,
                 builder: (context, _) {
                   return Flask(
                     height: 300,
