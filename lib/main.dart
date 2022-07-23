@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hogwarts_clock/repositories/clocks_repositories.dart';
 import 'package:hogwarts_clock/ui/pages/clocks/clocks.dart';
-import 'package:hogwarts_clock/utils/constants/text.dart';
+import 'package:hogwarts_clock/utils/constants/string_text.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart' show Firebase;
 
