@@ -35,8 +35,10 @@ abstract class DialogClock {
                     height: 300,
                     width: 50,
                     substance: Substance(
-                      color: ClocksRepositories.clocks[index].colorSubstance,
-                      fillingDegree: ClocksRepositories.clocks[index].value,
+                      color: ClocksRepositories
+                          .clocks!.clocks[index].colorSubstance,
+                      fillingDegree:
+                          ClocksRepositories.clocks!.clocks[index].value,
                       height: 300,
                     ),
                   );

@@ -18,13 +18,13 @@ class ListViewClocks extends StatelessWidget {
         width: 324,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: ClocksRepositories.clocks.length,
+          itemCount: ClocksRepositories.clocks!.clocks.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: ClockButton(
-                fillingDegree: ClocksRepositories.clocks[index].value,
-                color: ClocksRepositories.clocks[index].colorSubstance,
+                fillingDegree: ClocksRepositories.clocks!.clocks[index].value,
+                color: ClocksRepositories.clocks!.clocks[index].colorSubstance,
                 onPressed: () {
                   DialogClock.showSettingValue(
                     context: context,

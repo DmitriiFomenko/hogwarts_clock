@@ -1,7 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hogwarts_clock/models/clocks.dart';
 import 'package:hogwarts_clock/repositories/clocks_repositories.dart';
+import 'package:hogwarts_clock/services/firebase_clocks.dart';
+import 'package:hogwarts_clock/services/guid.dart';
 import 'package:hogwarts_clock/ui/pages/clocks/cubit/clocks_cubit.dart';
 import 'package:hogwarts_clock/ui/widgets/clocks/listview_clocks.dart';
 import 'package:hogwarts_clock/utils/constants/string_text.dart';
@@ -14,7 +17,7 @@ class ClocksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    controller.text = ClocksRepositories.guid;
+    controller.text = ClocksRepositories.clocks!.guid;
     return BlocProvider(
       create: (_) => ClocksCubit(),
       child: Scaffold(
@@ -29,9 +32,15 @@ class ClocksPage extends StatelessWidget {
                       ListViewClocks(),
                       TextButton(
                         onPressed: () async {
-                          await ClocksRepositories.loadClocks(
+                          ClocksRepositories.clocks = Clocks(
+                            clocks: ClocksRepositories.clocks!.clocks,
                             guid: controller.text,
                           );
+
+                          ClocksRepositories.clocks = await FirebaseClocks.load(
+                            guid: ClocksRepositories.clocks!.guid,
+                          );
+
                           context.read<ClocksCubit>().updateState();
                         },
                         child: const Text(StringsText.load),
@@ -44,8 +53,13 @@ class ClocksPage extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () async {
-                      await ClocksRepositories.saveClocks(
+                      ClocksRepositories.clocks = Clocks(
+                        clocks: ClocksRepositories.clocks!.clocks,
                         guid: controller.text,
+                      );
+
+                      await FirebaseClocks.save(
+                        clocks: ClocksRepositories.clocks!,
                       );
                     },
                     child: const Text(StringsText.save),
@@ -63,13 +77,17 @@ class ClocksPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      controller.text = ClocksRepositories.newGUID();
+                      ClocksRepositories.clocks = Clocks(
+                        clocks: ClocksRepositories.clocks!.clocks,
+                        guid: GUID.generate(),
+                      );
+                      controller.text = ClocksRepositories.clocks!.guid;
                     },
                     child: const Text(StringsText.generate),
                   ),
                   TextButton(
                     onPressed: () {
-                      ClocksRepositories.saveGUID(guid: controller.text);
+                      GUID.save(guid: controller.text);
                     },
                     child: const Text(StringsText.saveGUID),
                   ),

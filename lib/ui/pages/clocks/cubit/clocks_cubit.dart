@@ -6,20 +6,20 @@ class ClocksCubit extends Cubit<bool> {
   ClocksCubit() : super(true);
 
   void incValue({required int index}) {
-    ClocksRepositories.clocks[index].value += 0.2;
+    ClocksRepositories.clocks!.clocks[index].value += 0.2;
 
-    if (ClocksRepositories.clocks[index].value > 1) {
-      ClocksRepositories.clocks[index].value = 0;
+    if (ClocksRepositories.clocks!.clocks[index].value > 1) {
+      ClocksRepositories.clocks!.clocks[index].value = 0;
     }
 
     emit(!state);
   }
 
   void decValue({required int index}) {
-    ClocksRepositories.clocks[index].value -= 0.2;
+    ClocksRepositories.clocks!.clocks[index].value -= 0.2;
 
-    if (ClocksRepositories.clocks[index].value < 0) {
-      ClocksRepositories.clocks[index].value = 1;
+    if (ClocksRepositories.clocks!.clocks[index].value < 0) {
+      ClocksRepositories.clocks!.clocks[index].value = 1;
     }
 
     emit(!state);
