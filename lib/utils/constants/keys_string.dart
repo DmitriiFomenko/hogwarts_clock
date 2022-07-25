@@ -1,4 +1,4 @@
-abstract class StringsText {
+abstract class KeysString {
   static const String titleApp = 'Hogwarts clock';
   static const String load = 'Load';
   static const String save = 'Save';

@@ -7,7 +7,7 @@ import 'package:hogwarts_clock/services/firebase_clocks.dart';
 import 'package:hogwarts_clock/services/guid.dart';
 import 'package:hogwarts_clock/ui/pages/clocks/cubit/clocks_cubit.dart';
 import 'package:hogwarts_clock/ui/widgets/clocks/listview_clocks.dart';
-import 'package:hogwarts_clock/utils/constants/string_text.dart';
+import 'package:hogwarts_clock/utils/constants/keys_string.dart';
 
 // ignore: must_be_immutable
 class ClocksPage extends StatelessWidget {
@@ -43,7 +43,7 @@ class ClocksPage extends StatelessWidget {
 
                           context.read<ClocksCubit>().updateState();
                         },
-                        child: const Text(StringsText.load),
+                        child: const Text(KeysString.load),
                       ),
                     ],
                   );
@@ -62,14 +62,14 @@ class ClocksPage extends StatelessWidget {
                         clocks: ClocksRepositories.clocks!,
                       );
                     },
-                    child: const Text(StringsText.save),
+                    child: const Text(KeysString.save),
                   ),
-                  Text('${StringsText.os}: ${Platform.operatingSystem}'),
+                  Text('${KeysString.os}: ${Platform.operatingSystem}'),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       decoration: const InputDecoration(
-                        labelText: StringsText.guid,
+                        labelText: KeysString.guid,
                         border: OutlineInputBorder(),
                       ),
                       controller: controller,
@@ -83,13 +83,13 @@ class ClocksPage extends StatelessWidget {
                       );
                       controller.text = ClocksRepositories.clocks!.guid;
                     },
-                    child: const Text(StringsText.generate),
+                    child: const Text(KeysString.generate),
                   ),
                   TextButton(
                     onPressed: () {
                       GUID.save(guid: controller.text);
                     },
-                    child: const Text(StringsText.saveGUID),
+                    child: const Text(KeysString.saveGUID),
                   ),
                 ],
               ),

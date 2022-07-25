@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hogwarts_clock/repositories/clocks_repositories.dart';
-import 'package:hogwarts_clock/services/guid.dart';
 import 'package:hogwarts_clock/ui/pages/clocks/clocks.dart';
-import 'package:hogwarts_clock/utils/constants/string_text.dart';
+import 'package:hogwarts_clock/utils/constants/keys_string.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart' show Firebase;
 
@@ -23,7 +22,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: StringsText.titleApp,
+      title: KeysString.titleApp,
       routes: {
         '/': (_) => ClocksPage(),
       },
