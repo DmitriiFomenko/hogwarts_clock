@@ -33,22 +33,23 @@ class ClocksCubit extends Cubit<Clocks> {
   }
 
   Future<void> saveClocks({required String guid}) async {
-    ClocksRepositories.clocks = Clocks(
+    Clocks clocks = Clocks(
       clocks: state.clocks,
       guid: guid,
     );
 
+    ClocksRepositories.clocks = clocks;
     await FirebaseClocks.save(
-      clocks: ClocksRepositories.clocks!,
+      clocks: clocks,
     );
   }
 
   Future<void> loadClocks({required String guid}) async {
-    Clocks? newClocks = await FirebaseClocks.load(
+    Clocks? newState = await FirebaseClocks.load(
       guid: guid,
     );
 
-    ClocksRepositories.clocks = newClocks;
-    emit(newClocks!);
+    ClocksRepositories.clocks = newState;
+    emit(newState!);
   }
 }

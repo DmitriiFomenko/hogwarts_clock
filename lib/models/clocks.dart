@@ -21,24 +21,27 @@ class Clocks extends Equatable {
       ];
 
   static Future<Clocks> initializeValue() async {
-    Clocks clocks = Clocks(clocks: <Clock>[
-      Clock(
-        colorSubstance: ClockColors.green,
-        value: 0.3,
-      ),
-      Clock(
-        colorSubstance: ClockColors.blue,
-        value: 0.2,
-      ),
-      Clock(
-        colorSubstance: ClockColors.red,
-        value: 0.6,
-      ),
-      Clock(
-        colorSubstance: ClockColors.yellow,
-        value: 0.4,
-      ),
-    ], guid: await GUID.load());
+    Clocks clocks = Clocks(
+      clocks: <Clock>[
+        Clock(
+          colorSubstance: ClockColors.green,
+          value: 0.3,
+        ),
+        Clock(
+          colorSubstance: ClockColors.blue,
+          value: 0.2,
+        ),
+        Clock(
+          colorSubstance: ClockColors.red,
+          value: 0.6,
+        ),
+        Clock(
+          colorSubstance: ClockColors.yellow,
+          value: 0.4,
+        ),
+      ],
+      guid: await GUID.load(),
+    );
     return clocks;
   }
 
