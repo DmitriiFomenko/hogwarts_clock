@@ -1,6 +1,5 @@
-import 'dart:io';
 import 'dart:math';
-import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class GUID {
   static String generate() {
@@ -28,22 +27,13 @@ abstract class GUID {
   }
 
   static Future<void> save({required String guid}) async {
-    Directory tempDir = await getTemporaryDirectory();
-    String tempPath = tempDir.path;
-
-    await File('$tempPath/guid.txt').writeAsString(guid);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('GUID', guid);
   }
 
   static Future<String> load() async {
-    Directory tempDir = await getTemporaryDirectory();
-    String tempPath = tempDir.path;
-
-    try {
-      await File('$tempPath/guid.txt').readAsString().then((String contents) {
-        return contents;
-      });
-    } catch (_) {}
-
-    return generate();
+    final prefs = await SharedPreferences.getInstance();
+    final String guid = prefs.getString('GUID') ?? generate();
+    return guid;
   }
 }
