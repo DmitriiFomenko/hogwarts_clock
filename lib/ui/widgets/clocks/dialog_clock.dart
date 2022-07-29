@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hogwarts_clock/repositories/clocks_repositories.dart';
+import 'package:hogwarts_clock/models/clocks.dart';
 import 'package:hogwarts_clock/ui/pages/clocks/cubit/clocks_cubit.dart';
 import 'package:hogwarts_clock/ui/widgets/clocks/clock_button/widgets/flask.dart';
 import 'package:hogwarts_clock/ui/widgets/clocks/clock_button/widgets/substance.dart';
@@ -28,17 +28,15 @@ abstract class DialogClock {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              BlocBuilder<ClocksCubit, bool>(
+              BlocBuilder<ClocksCubit, Clocks>(
                 bloc: clocksCubit,
-                builder: (context, _) {
+                builder: (context, state) {
                   return Flask(
                     height: 300,
                     width: 50,
                     substance: Substance(
-                      color: ClocksRepositories
-                          .clocks!.clocks[index].colorSubstance,
-                      fillingDegree:
-                          ClocksRepositories.clocks!.clocks[index].value,
+                      color: state.clocks[index].colorSubstance,
+                      fillingDegree: state.clocks[index].value,
                       height: 300,
                     ),
                   );

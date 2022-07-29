@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hogwarts_clock/models/clocks.dart';
-import 'package:hogwarts_clock/repositories/clocks_repositories.dart';
 
 abstract class FirebaseClocks {
   static Future<void> save({required Clocks clocks}) async {
@@ -15,10 +14,9 @@ abstract class FirebaseClocks {
     final snapshot = await docClock.get();
 
     if (snapshot.exists) {
-      return ClocksRepositories.clocks!.fromJson(snapshot.data()!);
+      return Clocks.fromJson(snapshot.data()!);
     } else {
-      ClocksRepositories.initializeValue();
-      return ClocksRepositories.clocks;
+      return Clocks.initializeValue();
     }
   }
 }

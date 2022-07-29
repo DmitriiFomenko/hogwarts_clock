@@ -24,24 +24,18 @@ class ClocksPage extends StatelessWidget {
         body: SafeArea(
           child: ListView(
             children: [
-              BlocBuilder<ClocksCubit, bool>(
-                builder: (context, _) {
+              BlocBuilder<ClocksCubit, Clocks>(
+                builder: (context, state) {
                   return Column(
                     children: [
-                      // ignore: prefer_const_constructors
-                      ListViewClocks(),
+                      ListViewClocks(
+                        clocks: state.clocks,
+                      ),
                       TextButton(
                         onPressed: () async {
-                          ClocksRepositories.clocks = Clocks(
-                            clocks: ClocksRepositories.clocks!.clocks,
-                            guid: controller.text,
-                          );
-
-                          ClocksRepositories.clocks = await FirebaseClocks.load(
-                            guid: ClocksRepositories.clocks!.guid,
-                          );
-
-                          context.read<ClocksCubit>().updateState();
+                          await context
+                              .read<ClocksCubit>()
+                              .loadClocks(guid: controller.text);
                         },
                         child: const Text(KeysString.load),
                       ),

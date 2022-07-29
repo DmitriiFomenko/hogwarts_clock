@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hogwarts_clock/repositories/clocks_repositories.dart';
+import 'package:hogwarts_clock/models/clock.dart';
 import 'package:hogwarts_clock/ui/pages/clocks/cubit/clocks_cubit.dart';
 import 'package:hogwarts_clock/ui/widgets/clocks/clock_button/clock_button.dart';
 import 'package:hogwarts_clock/ui/widgets/clocks/dialog_clock.dart';
@@ -8,7 +8,10 @@ import 'package:hogwarts_clock/ui/widgets/clocks/dialog_clock.dart';
 class ListViewClocks extends StatelessWidget {
   const ListViewClocks({
     Key? key,
+    required this.clocks,
   }) : super(key: key);
+
+  final List<Clock> clocks;
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +21,13 @@ class ListViewClocks extends StatelessWidget {
         width: 324,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: ClocksRepositories.clocks!.clocks.length,
+          itemCount: clocks.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: ClockButton(
-                fillingDegree: ClocksRepositories.clocks!.clocks[index].value,
-                color: ClocksRepositories.clocks!.clocks[index].colorSubstance,
+                fillingDegree: clocks[index].value,
+                color: clocks[index].colorSubstance,
                 onPressed: () {
                   DialogClock.showSettingValue(
                     context: context,

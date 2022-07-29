@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hogwarts_clock/models/clocks.dart';
 import 'package:hogwarts_clock/repositories/clocks_repositories.dart';
 import 'package:hogwarts_clock/ui/pages/clocks/clocks.dart';
 import 'package:hogwarts_clock/utils/constants/keys_string.dart';
@@ -9,7 +10,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  await ClocksRepositories.initializeValue();
+  ClocksRepositories.clocks = await Clocks.initializeValue();
 
   runApp(
     const App(),
